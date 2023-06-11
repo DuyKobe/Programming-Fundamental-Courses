@@ -1,0 +1,20 @@
+void process(string fileName) {
+    ifstream file(fileName);
+
+    int N, M;
+    file >> N >> M;
+
+    double maxOverall = -1.0;
+    for (int i = 0; i < N; i++) {
+        double maxRow = -1.0;
+        for (int j = 0; j < M; j++) {
+            double num;
+            file >> num;
+            maxRow = max(maxRow, num);
+            maxOverall = max(maxOverall, num);
+        }
+        cout << maxRow << " ";
+    }
+    cout << maxOverall << endl;
+    file.close();
+}

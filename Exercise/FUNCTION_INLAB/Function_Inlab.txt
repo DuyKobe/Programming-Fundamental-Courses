@@ -1,0 +1,222 @@
+Câu 1:
+Một chuỗi được gọi là palindrome nếu chuỗi đó giống với chuỗi được đảo ngược từ chính nó. Ví dụ: “eye”, “noon”, “abcba”...
+
+Hãy viết hàm kiểm tra xem một chuỗi có là palindrome hay không?
+
+Đầu vào:
+
+const char* str: chuỗi cần kiểm tra palindrome. str chỉ bao gồm chữ cái thường
+Đầu ra:
+
+bool: true nếu chuỗi str là palindrome, ngược lại false
+
+bool isPalindrome(const char* str) {
+    int len =0;
+    int i;
+    while(str[len]!='\0'){
+        len++;
+    }
+    for( i=0;i<len/2;i++){
+        if(str[i]!=str[len-i-1]){
+            return false;
+        }
+        
+    }
+    return true;
+}
+*
+const char* str = "abba";
+cout << isPalindrome(str);
+*
+Test	Result
+const char* str = "abba";
+cout << isPalindrome(str);
+
+1
+
+
+Câu 2:
+Một số tự nhiên n được gọi là đặc biệt khi và chỉ khi n là số nguyên tố và tổng các chữ số của n cũng là số nguyên tố. Viết hàm kiểm tra một số tự nhiên có đặc biệt hay không.
+
+Đầu vào:
+
+int n: số tự nhiên cần kiểm tra có phải số đặc biệt không
+Đầu ra:
+
+bool: trả về true nếu n là số đặc biệt, ngược lại trả về false
+
+bool laSoNguyenTo1(int n)
+{
+    // Neu n < 2 thi khong phai la SNT
+    if (n < 2) {
+        return false;
+    }
+    else {
+        for (int i = 2; i < (n - 1); i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
+bool isSpecialNumber(int n) {
+    int s = 0;
+    int a= n;
+    while(a>0){
+        s =s+ a%10;
+        a = a/10;
+    } 
+    if(laSoNguyenTo1(n)==true && laSoNguyenTo1(s)==true){
+        return true;
+    }
+    return false;
+}
+*int n;
+cin >> n;
+cout << isSpecialNumber(n);
+*
+Test	Input	Result
+int n;
+cin >> n;
+cout << isSpecialNumber(n);
+23
+1
+CÂU 3:
+Viết hàm để mã hóa và giải mã một đoạn text theo phương pháp Caesar Cipher. Để mã hoá và giải mã một chuỗi ký tự text, ta cần một tham số có giá trị nguyên là shift.
+
+Hàm mã hóa sẽ thay đổi từng chữ cái trong text bằng cách dịch chuyển chữ cái đó sang phải shift lần trong bảng chữ cái. Ví dụ với shift = 3. Khi đó 'a' được mã hoá thành 'd', 'b' được mã hoá thành 'e',... 'z' được mã hoá thành 'c'
+
+Hàm giải mã sẽ nhận một chuỗi ký tự text và giá trị nguyên shift và giải mã chuỗi ký tự này thành chuỗi ban đầu (tức dịch chuyển từng chữ cái sang trái shift lần trong bảng chữ cái)
+
+Đầu vào:
+
+char* text: chuỗi ký tự cần được mã hoá hoặc giải mã, chỉ bao gồm chữ cái thường và hoa
+int shift: giá trị dịch chuyển trong Caesar Cipher
+
+void encrypt(char* text, int shift) {
+    shift = shift%(26);
+    int len = 0,i;
+    while(text[len]!='\0'){
+        len++;
+    }
+    for(i=0;i<len;i++){
+        if(text[i]>=65&&text[i]<=90){
+            if((text[i]+shift)>90){
+                text[i] = text[i] + shift- 26;
+            }else{
+                text[i]=text[i]+shift;
+            }
+        }
+        if(text[i]>=97&&text[i]<=122){
+            if((text[i]+shift)>122){
+                text[i] = text[i] + shift- 26;
+            }else{
+            text[i]=text[i]+shift;
+            }
+        }
+    }
+}
+
+void decrypt(char* text, int shift) {
+    shift = shift%(26);
+    int len = 0,i;
+    while(text[len]!='\0'){
+        len++;
+    }
+    for(i=0;i<len;i++){
+        if(text[i]>=65&&text[i]<=90){
+            if(text[i]-shift<65){
+                text[i] = text[i] +(26-shift);
+            }else{
+                text[i]=text[i]-shift;
+            }
+        }
+        if(text[i]>=97&&text[i]<=122){
+            if(text[i]-shift<97){
+                text[i] = text[i] +(26-shift);
+            }else{
+                text[i]=text[i]-shift;
+            }
+            
+        }
+    }
+}
+*
+Test	Input	Result
+int n, shift; 
+cin >> n >> shift;
+char* text = new char[n+1];
+for(int i = 0; i < n; i++) cin >> text[i];
+text[n] = 0;
+
+encrypt(text, shift);
+cout << text << '\n';
+decrypt(text, shift);
+cout << text;
+
+delete[] text;
+6 3
+aczDYZ
+dfcGBC
+aczDYZ
+
+Viết hàm kiểm tra các phần tử trong mảng có duy nhất hay không
+
+Đầu vào:
+
+int* arr: mảng số tự nhiên
+int n: số lượng phần tử trong mảng
+Đầu ra:
+
+bool: trả về true nếu các phần tử trong mảng là duy nhất, ngược lại trả về false
+Chú ý: arr[i] nằm trong khoảng từ [0, 1000]
+
+bool checkElementsUniqueness(int* arr, int n) {
+    int i,j;
+    for(i=0;i<n-1;i++){
+        for(j=i+1;j<n;j++){
+            if(*(arr+i)==*(arr+j)){
+                return false;
+            }
+        }
+    }
+    return true;
+}
+Test	Input	Result
+int n;
+cin >> n;
+int* arr = new int[n];
+for(int i = 0; i < n; i++) {
+    cin >> arr[i];
+}
+cout << checkElementsUniqueness(arr, n);
+delete[] arr;
+5
+2 5 13 5 2
+0
+
+Câu 5:
+Cho một số thập phân dương làm đầu vào, chúng ta cần triển khai hàm
+
+long int decimalToBinary(int decimal_number){}
+để chuyển đổi số thập phân dương đã cho thành số nhị phân tương đương.
+
+Xin lưu ý rằng bạn không thể sử dụng từ khóa for, while, goto (ngay cả trong tên biến, comment).
+
+
+Đối với bài tập này, chúng ta có #include <iostream> và sử dụng namespace std;
+
+long int decimalToBinary(int decimal_number)
+{
+    if(decimal_number == 0) return 0;
+    else if(decimal_number == 1) return 1;
+	return decimal_number%2 + 10*decimalToBinary(decimal_number/2);
+}
+Test	Result
+cout << decimalToBinary(20);
+10100
+
+
+

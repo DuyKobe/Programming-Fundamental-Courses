@@ -1,0 +1,8 @@
+﻿  bai1.cpp
+E:\NHAT DUY\Chuyên ngành\Năm 4\Kỹ thuật lập trình\Exercise\C_String_Prelab\C_String_Prelab\bai1.cpp(20,21): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  bai2.cpp
+E:\NHAT DUY\Chuyên ngành\Năm 4\Kỹ thuật lập trình\Exercise\C_String_Prelab\C_String_Prelab\bai2.cpp(8,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  bai3.cpp
+  Generating Code...
+bai2.obj : error LNK2005: main already defined in bai1.obj
+E:\NHAT DUY\Chuyên ngành\Nam 4\K? thu?t l?p trình\Exercise\C_String_Prelab\x64\Debug\C_String_Prelab.exe : fatal error LNK1169: one or more multiply defined symbols found

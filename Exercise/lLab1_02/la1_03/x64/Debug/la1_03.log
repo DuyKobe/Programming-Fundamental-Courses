@@ -1,0 +1,4 @@
+﻿  Source.cpp
+E:\NHAT DUY\Chuyên ngành\Năm 4\Kỹ thuật lập trình\lLab1_02\la1_03\Source.cpp(7,5): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+E:\NHAT DUY\Chuyên ngành\Năm 4\Kỹ thuật lập trình\lLab1_02\la1_03\Source.cpp(9,46): warning C4554: '<<': check operator precedence for possible error; use parentheses to clarify precedence
+  la1_03.vcxproj -> E:\NHAT DUY\Chuyên ngành\Năm 4\Kỹ thuật lập trình\lLab1_02\x64\Debug\la1_03.exe

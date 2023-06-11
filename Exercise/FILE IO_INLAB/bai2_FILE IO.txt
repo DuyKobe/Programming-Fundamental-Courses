@@ -1,0 +1,31 @@
+void threeChars(string fileName) {
+    string line;
+    ifstream file(fileName);//
+
+    while (getline(file, line)) {
+        // Kiem tra xem 3 ky tu tren moi hang co dung thu tu bang chu cai hay khong
+        bool test = true;
+        if (line == "***") {// Thoat khoi vong lap khi doc vao chuoi "***"
+            break;
+        }
+
+        for (int i = 0; i < line.length() - 2; i++) {
+            if (line[i] > line[i + 1]) {
+                test = false;
+                break;
+            }
+        }
+
+        // Xuat ket qua
+        if (test) {
+            cout << "true" << endl;
+        }
+        else {
+            cout << "false" << endl;
+        }
+
+        
+    }
+
+    file.close();
+}

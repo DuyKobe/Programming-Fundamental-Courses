@@ -1,0 +1,18 @@
+void uppercase(string output) {
+
+
+    string input;
+    getline(cin, input);
+
+    // Chuyen tat ca cac ky tu trong chuoi S thanh ky tu in hoa
+    for (int i = 0; i < input.length(); i++) {
+        if (islower(input[i])) {
+            input[i] = toupper(input[i]);
+        }
+    }
+
+    // Ghi chuoi da xu ly vao file
+    ofstream file(output);
+    file << input;
+    file.close();
+}

@@ -1,0 +1,4 @@
+﻿  LinkedList.cpp
+E:\NHAT DUY\Chuyên ngành\Năm 4\Kỹ thuật lập trình\Exercise\LinkedList\LinkedList\LinkedList.cpp(17,9): warning C4101: 'arr': unreferenced local variable
+E:\NHAT DUY\Chuyên ngành\Năm 4\Kỹ thuật lập trình\Exercise\LinkedList\LinkedList\LinkedList.cpp(19,10): warning C4101: 'str': unreferenced local variable
+  LinkedList.vcxproj -> E:\NHAT DUY\Chuyên ngành\Năm 4\Kỹ thuật lập trình\Exercise\LinkedList\x64\Debug\LinkedList.exe

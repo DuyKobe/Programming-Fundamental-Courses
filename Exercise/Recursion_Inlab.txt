@@ -1,0 +1,20 @@
+bai1: 
+bool checkDuplicate(int* ar, int size)
+*Thuật giải 
+//base case
+size ==1 -> true
+//recursion code
+Kiểm tra phần tử hiện tại với các phần tử trước đó trong dãy
+arri = arr[size-1] -> false
+-vòng lặp
+đệ quy checkDuplicate(ar, size-1)
+bai2: 
+int recursiveSearch(int& n, int m, int arr[], int index)
+base case
+index == n-> -1
+else
+Lưu giá tr vi tri trùng 
+dùng vong lặp xóa phân tử trung 
+giảm sos phần rtuw
+đệ quy 
+
