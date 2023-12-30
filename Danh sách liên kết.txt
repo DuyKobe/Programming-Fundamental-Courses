@@ -1,0 +1,185 @@
+struct Node{
+int data;
+Node* link;
+}
+         CHÈN NÚT LIÊN KẾT ĐƠN 
+Inser Node (đầu danh sách)
+Insert Node (giữa danh sách)
+Inser Node( cuối danh sách)
+* Mã giả:
+* Hàm Insert
+bool Insert(List &l, int data){cho chèn ở cuối danh sách)
+
+       REMOVE
+1. Cập nhật con trỏ: (xóa nút đầu)
+nhìu nút: head = pDeal ->link
+1 nút: head = NULL;
+2. Cập nhật con trỏ: (xóa nút giữa hau cuối ds)
+pPre -> link = pDel -> link
+3. Hàm REMOVE
+4. Hàm Transverse
+5. Hàm Clear (xóa tất cả các nút)
+
+BÀi cơ bản về INSERT
++ Đề: Nhập vào một số nguyên dương n, tiếp theo là n số nguyên của một dãy số, hãy cài đặt nó vào một danh sách liên kết đơn. Tiếp theo nhập hai số nguyên k và x, (0 ≤ k ≤ n), hãy chèn giá trị x vào danh sách liên kết tại chỉ số k và in ra màn hình danh sách đó, sau một phần tử có một khoảng trắng.
+#include <stdio.h>
+#include <stdlib.h>
+struct node{
+	int data;
+	struct node *next;
+};
+
+	
+
+void printList(struct node *l){
+	struct node *p = l;
+	while (p != NULL){
+        printf("%d ",p->data);
+		p = p->next;
+	}
+}
+struct node *addElement(struct node*p, int x){
+	struct node *temp = createNode(x);
+	p->next = temp;
+	return temp;
+}
+struct node *addHead(struct node *l, int x){
+	struct node *temp = (struct node*)malloc(sizeof(struct node)); // Cấp phát bộ nhớ cho nút mới
+	temp->data = x;
+	temp->next = l;
+	l = temp;
+	return l;
+}
+
+struct node *addAt(struct node *l, int k, int x){
+	struct node *p = l;
+	for (int i = 0; i < k-1; i++){
+		p = p->next;
+	}
+	struct node *temp = (struct node*)malloc(sizeof(struct node)); // Cấp phát bộ nhớ cho nút mới
+	temp->data = x;
+	temp->next = p->next;
+	p->next = temp;
+	
+	return l;
+}
+
+struct node *addTail(struct node *l, int x){
+	struct node *p = l;
+	while (p->next != NULL){
+		p= p->next;
+	}
+	struct node *temp = (struct node*)malloc(sizeof(struct node)); // Cấp phát bộ nhớ cho nút mới
+	temp->data = x;
+	temp->next = NULL;
+	p->next = temp;
+	return l;
+}
+int main(){
+	int n, x, k;
+    scanf("%d",&n);
+    scanf("%d",&x);
+	struct node *l = createNode(x);
+	struct node *p = l;
+	for (int i = 1; i < n; i++){
+		scanf("%d",&x);
+		p = addElement(p, x);
+	}
+    scanf("%d",&k);
+    scanf("%d",&x);
+    if (k == 0){
+		l = addHead(l, x);	
+	} else if (k == n){
+		l = addTail(l, x);
+	} else{
+		l = addAt(l, k, x);
+	}
+	printList(l);
+	return 0;
+}
+
+ĐỀ: Xóa node vị trí k
+#include <stdio.h>
+#include <stdlib.h>
+struct node{
+	int data;
+	struct node *next;
+};
+
+struct node *createNode(int x){
+    struct node *temp = (struct node*)malloc(sizeof(struct node)); // Cấp phát bộ nhớ cho nút mới
+    temp->next = NULL;
+    temp->data = x; 
+    return temp;
+}
+
+void printList(struct node *l){
+	struct node *p = l;
+	while (p != NULL){
+        printf("%d ",p->data);
+		p = p->next;
+	}
+}
+struct node *addElement(struct node*p, int x){
+	struct node *temp = createNode(x);
+	p->next = temp;
+	return temp;
+}
+struct node *deleteHead(struct node *l){
+	struct node *p = l;
+	p = p->next;
+	free(l);
+	return p;
+
+struct node *deletetAt(struct node *l, int k){
+	struct node *p = l;
+	for (int i = 0; i < k-1; i++){
+		p = p->next;
+	}
+    struct node *temp = p->next;
+	p->next = p->next->next;
+	free(temp);
+	return l;
+}
+struct node *deleteTail(struct node *l){
+	struct node *p = l;
+	while (p->next->next != NULL){
+		p = p->next;
+	}
+	free(p->next);
+	p->next = NULL;
+	return l;
+}
+
+int main(){
+	int n, x, k;
+    scanf("%d",&n);
+    scanf("%d",&x);
+	struct node *l = createNode(x);
+	struct node *p = l;
+	for (int i = 1; i < n; i++){
+		scanf("%d",&x);
+		p = addElement(p, x);
+	}
+    scanf("%d",&k);
+   if (k == 0){
+		l = deleteHead(l);
+	} else if (k == n-1){
+		l = deleteTail(l);
+	} else{
+		l = deletetAt(l, k);
+	}
+	printList(l);
+	return 0;
+}
+
+
+*Lấy 1 node có vị trí k
+struct node *getNode(struct node *l, int k){
+	struct node *p = l;
+	for (int i = 0; i < k; i++){
+		p = p->next;
+	}
+	return p;
+}
+

@@ -1,0 +1,19 @@
+* getline(file, str): lấy chuỗi hàng trong file
+*strtok(str, sep);
+str là chuỗi cần tách
+sep là ký tự phân tách. (sep viết tắt separator)
+->Tách chuỗi 
+*strcmp(str1, str2): so sánh 2 chuỗi
+ trả về 0 thì 2 chuỗi bằng nhau, lớn hơn 0 thì chuỗi str1 lớn hơn chuỗi str2 và ngược lại nếu nhỏ hơn 0 thì chuỗi str1 nhỏ hơn str2.
+*substr(int pos, int nchar): trích chuôi
+*size_t find (const string& str, size_t pos = 0);
+size_t find (const char* s, size_t pos = 0)
+ hàm str.find() được sử dụng để tìm kiếm vị trí xuất hiện đầu tiên của một chuỗi con trong một chuỗi đã cho. 
+Hàm này trả về vị trí đầu tiên của chuỗi con trong chuỗi đã cho nếu tìm thấy, hoặc giá trị string::npos nếu không tìm thấy.
+str: chuỗi con cần tìm kiếm.
+pos: vị trí bắt đầu tìm kiếm trong chuỗi đã cho, mặc định là 0.
+*Chuyển số ở dạng chuỗi thành số thập phân
+ int i,n2=0;
+    for(i=0;i<str1.size();i++){
+        n2 = n2*10 + (str1[i]-48);
+    }

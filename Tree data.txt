@@ -1,0 +1,63 @@
+*Cho một dãy n số nguyên. Hãy cài đặt các số trong dãy đó vào kiểu dữ liệu cây. 
+In cây theo cách duyệt trung thứ tự (xem lý thuyết). Sau mỗi phần tử có đúng một khoảng trắng.
+
+#include <stdio.h>
+#include <stdlib.h>
+struct node{
+	int data;
+	struct node *left;
+    struct node *right;
+};
+struct node *insert(struct node*t, int x){
+    if (t == NULL){
+		struct node *temp = (struct node*)malloc(sizeof(struct node));
+		temp->data =x;
+		temp->left = NULL;
+		temp->right = NULL;
+		return temp;
+	} else{
+		if (x < t->data){
+			t->left = insert(t->left, x);
+		} else{
+			t->right = insert(t->right, x);
+		}
+	}
+}
+void printTree(struct node *t){
+	if (t != NULL){
+		printTree(t->left);
+        printf("%d ",t->data);
+		printTree(t->right);
+	}
+}
+int main(){
+	int n, x;
+	scanf("%d",&n);
+	struct node * t = NULL;
+	for (int i = 0; i < n; i++){
+		scanf("%d",&x);
+		t = insert(t, x);
+	}
+	printTree(t);
+}
+*Kiểm tra số nút lá (ko có nút con)
+bool isLeafNode(struct node *l){
+	return (l->left == NULL && l->right == NULL);
+}
+int countLeafNode(struct node *t){
+	if (t == NULL) return 0;
+	if (isLeafNode(t)) return 1;
+	return countLeafNode(t->left) + countLeafNode(t->right);
+}
+*Tinh bậc 
+int max(int num1, int num2) {
+    return (num1 > num2) ? num1 : num2;
+}
+bool isLeafNode(struct node *l){
+	return (l->left == NULL && l->right == NULL);
+}
+int treeLevel(struct node *t){
+    if (t==NULL) return -1;
+    if (isLeafNode(t)) return 0;
+    return 1 + max(treeLevel(t->left), treeLevel(t->right));
+}
